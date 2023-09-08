@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        /* Styling for the navigation menu */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: black;
+        }
+     
+
+        .nav .LogoName {
+            color: white;
+            margin-left: -20px;
+        }
+
+        .nav .topRightContents {
+            list-style-type: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            margin-right: -50px;
+        }
+
+        .nav .topRightContents li {
+            margin-right: 20px;
+        }
+
+        .nav .topRightContents a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        /* Styling for the mobile menu icon */
+        .mobile-menu-icon {
+            display: none; /* Initially hidden on desktop */
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+            z-index: 2;
+        }
+
+        /* Styling for the mobile menu */
+        .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -300px; /* Adjust the width of the menu */
+    width: 300px; /* Adjust the width of the menu */
+    height: 100%;
+    background-color: rgb(26, 25, 25);
+    border-radius: 20px;
+    padding: 20px;
+    z-index: 1;
+    transition: right 0.3s ease-in-out;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+.mobile-menu a {
+    text-decoration: none;
+    color: #c90707;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 0; /* Add vertical padding to separate elements */
+    width: 100%; /* Ensure full width for each menu item */
+
+    /* Center the text horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+        /* Your existing styles here */
+
+        ul {
+            list-style-type: none;
+            display: flex;
+            margin-top: -45px;
+            float: right;
+        }
+
+        ul a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 20px;
+            justify-content: space-between;
+            padding: 10px;
+            transition: letter-spacing 0.3s ease; /* Add letter-spacing transition */
+        }
+
+        /* Apply letter-spacing animation on hover */
+        ul a:hover {
+            letter-spacing: 2px; /* Adjust the desired letter-spacing on hover */
+        }
+
+     
+
+        /* Media query for mobile devices */
+        @media screen and (max-width: 768px) {
+            .nav .topRightContents {
+                display: none; /* Hide the navigation menu on smaller screens */
+            }
+
+            .mobile-menu-icon {
+                display: block; /* Display the mobile menu icon */
+                position: absolute;
+                top: 20px; /* Adjust the top position as needed */
+                right: 20px; /* Adjust the right position as needed */
+            }
+
+            .mobile-menu {
+                display: block; /* Display the mobile menu */
+            }
+        }
+
+        /* Stack child elements vertically in the mobile menu */
+.mobile-menu ul {
+    flex-direction: column;
+}
+
+/* CSS for the video background */
+.background-video {
+    position: absolute;
+    top: 50%;
+    right: 300px;
+    transform: translate(0, -50%);
+    width: 40%; /* Adjust the width of the video */
+    max-height: 80%; /* Adjust the maximum height of the video */
+    z-index: -1; /* Place it behind other content */
+    border-radius: 10px;
+}
+
+/* CSS for the text overlay */
+.text-overlay {
+    position: absolute;
+    top: 40%;
+    left: 400px; /* Adjust the left position for the text */
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    font-size: 24px;
+    max-width: 40%;
+}
+
+.text-overlay h1 {
+    margin: 0; /* Remove default margin to align the lines */
+}
+
+.text-overlay h1 br {
+    display: inline-block; /* Make the line breaks start from the same point */
+}
+
+.text-overlay p{
+    margin-top: 30px;
+    margin-left: 5%;
+}
+
+/* CSS for the arrows on both sides */
+/* CSS for the arrows on both sides */
+.arrow {
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.7); /* Adjust opacity and color as needed */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.arrow.left {
+    left: 20px;
+}
+
+.arrow.right {
+    right: 20px;
+}
+
+.yellow-line {
+    position: absolute;
+    top: 47%; /* Adjust the vertical position as needed */
+    left: 277px; /* Adjust the horizontal position as needed */
+    width: 4px; /* Adjust the width of the line */
+    height: 30px; /* Adjust the height of the line */
+    background-color: yellow; /* Set the background color to yellow */
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <h2 class="LogoName">Dawood A</h2>
+        <div class="mobile-menu-icon" id="mobileMenuIcon">&#9776;</div>
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Portfolio</a></li>
+            </ul>
+        </div>
+        <ul class="topRightContents">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Portfolio</a></li>
+        </ul>
+    </div>
+
+
+    <!-- Video background -->
+    <video autoplay loop muted playsinline class="background-video">
+        <source src="Upwork Intro Video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+
+    <!-- Text overlay -->
+    <div class="text-overlay">
+       <h1>My <br>Intro Video</h1>
+       <p id="MG">Motion Graphics</p>     
+    
+    </div>
+
+    <!-- Add this below your text overlay -->
+<div class="yellow-line"></div>
+
+
+    <!-- Left arrow -->
+    <div class="arrow left">&#8249;</div>
+
+    <!-- Right arrow -->
+    <div class="arrow right">&#8250;</div>
+
+    <script>
+        // JavaScript to toggle the mobile menu
+        const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuIcon.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>
