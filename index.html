@@ -150,21 +150,36 @@
 }
 
 /* CSS for the video background */
+/* CSS for the video background */
+/* CSS for the video background */
 .background-video {
     position: absolute;
-    top: 50%;
+    top: 25%;
     right: 300px;
-    transform: translate(0, -50%);
     width: 40%; /* Adjust the width of the video */
     max-height: 80%; /* Adjust the maximum height of the video */
     z-index: -1; /* Place it behind other content */
-    border-radius: 10px;
+    border-radius: 5px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease, transform 0.3s ease; /* Add transitions for filter and transform */
+   
+
+    /* Set transform origin to the center */
+    transform-origin: center center;
 }
+
+.background-video:hover {
+    filter: none;
+    
+}
+
+
+
 
 /* CSS for the text overlay */
 .text-overlay {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 400px; /* Adjust the left position for the text */
     transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 0.7);
@@ -183,18 +198,30 @@
     display: inline-block; /* Make the line breaks start from the same point */
 }
 
-.text-overlay p{
-    margin-top: 30px;
+.text-overlay .MG{
+    margin-top: 10%;
     margin-left: 5%;
+    
+}
+.text-overlay .desc{
+    margin-top: 10%;
 }
 
+.text-overlay .yellow-line {
+    position: absolute;
+    top: 54%; /* Adjust the vertical position as needed */
+    left: 20px; /* Adjust the horizontal position as needed */
+    width: 4px; /* Adjust the width of the line */
+    height: 30px; /* Adjust the height of the line */
+    background-color: yellow; /* Set the background color to yellow */
+}
 /* CSS for the arrows on both sides */
 /* CSS for the arrows on both sides */
 .arrow {
     position: absolute;
     top: 50%;
-    width: 40px;
-    height: 40px;
+    width: 90px;
+    height: 90px;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.7); /* Adjust opacity and color as needed */
     border-radius: 50%;
@@ -202,26 +229,28 @@
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 20px;
+    font-size: 40px;
     cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .arrow.left {
-    left: 20px;
+    left: 70px;
+    border: 1px solid white; /* Add white border to the left arrow */
 }
 
 .arrow.right {
-    right: 20px;
+    right: 70px;
+    border: 1px solid white; /* Add white border to the right arrow */
 }
 
-.yellow-line {
-    position: absolute;
-    top: 47%; /* Adjust the vertical position as needed */
-    left: 277px; /* Adjust the horizontal position as needed */
-    width: 4px; /* Adjust the width of the line */
-    height: 30px; /* Adjust the height of the line */
-    background-color: yellow; /* Set the background color to yellow */
+.arrow:hover {
+    background-color: white; /* Fill the circle with white color on hover */
+    color: black; /* Change arrow color to black on hover */
+    width: 100px;
+    height: 100px;
 }
+
 
 
     </style>
@@ -257,8 +286,9 @@
     <!-- Text overlay -->
     <div class="text-overlay">
        <h1>My <br>Intro Video</h1>
-       <p id="MG">Motion Graphics</p>     
-    
+       <p class="MG">Motion Graphics</p>     
+       <p class="desc">A short intro video showcasing <br> my editing skills.</p>
+       <div class="yellow-line"></div>     
     </div>
 
     <!-- Add this below your text overlay -->
@@ -271,15 +301,65 @@
     <!-- Right arrow -->
     <div class="arrow right">&#8250;</div>
 
-    <script>
-        // JavaScript to toggle the mobile menu
-        const mobileMenuIcon = document.getElementById('mobileMenuIcon');
-        const mobileMenu = document.getElementById('mobileMenu');
+<script>
+      // JavaScript to toggle the mobile menu
+    const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+    const mobileMenu = document.getElementById('mobileMenu');
 
-        mobileMenuIcon.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
+    mobileMenuIcon.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+    });
+
+    const video = document.querySelector('.background-video');
+    const arrows = document.querySelectorAll('.arrow'); // Select all arrow elements
+
+
+
+/* ARROWS MOVEMENT THING */
+
+    arrows.forEach((arrow) => {
+        arrow.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+             const mouseY = e.clientY;
+            const arrowX = arrow.offsetLeft + arrow.offsetWidth / 2;
+            const arrowY = arrow.offsetTop + arrow.offsetHeight / 2;
+            const deltaX = mouseX - arrowX;
+            const deltaY = mouseY - arrowY;
+            const moveX = deltaX / 20; /* Adjust the movement factor as needed */
+            const moveY = deltaY / 20; /* Adjust the movement factor as needed */
+
+            arrow.style.transform = `translate(${moveX}px, ${moveY - arrow.offsetHeight / 2}px)`; // Adjust the transform here
+            arrow.style.backgroundColor = 'white'; // Fill arrow circle with white
+            arrow.style.color = 'black'; // Change arrow color to black
         });
-    </script>
+
+        arrow.addEventListener('mouseout', () => {
+            arrow.style.transform = 'translateY(-50%)'; // Reset to center position
+            arrow.style.backgroundColor = 'rgba(0, 0, 0, 0.7)'; // Reset arrow circle color
+            arrow.style.color = 'white'; // Reset arrow color
+        });
+    });
+
+    /* Video MOVEMENT THING */
+    video.addEventListener('mousemove', (e) => {
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+    const videoX = video.offsetLeft + video.offsetWidth / 2;
+    const videoY = video.offsetTop + video.offsetHeight / 2;
+    const deltaX = mouseX - videoX;
+    const deltaY = mouseY - videoY;
+    const moveX = deltaX / 20; /* Adjust the movement factor as needed */
+    const moveY = deltaY / 20; /* Adjust the movement factor as needed */
+
+    video.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    });
+
+    video.addEventListener('mouseout', () => {
+    video.style.transform = 'translate(0)';
+    });
+
+
+</script>
 </body>
 
 </html>
