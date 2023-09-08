@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Page Title</title>
+    <title>Git Page</title>
     <style>
         /* Reset default styles */
         * {
@@ -23,15 +23,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 50px;
-            background-color: black;
+            padding: 20px 5%;
+            background-color: black;    
         }
-     
 
         .nav .LogoName {
             color: white;
             margin-left: -20px;
         }
+        .yellow-dot {
+    color: yellow;
+}
 
         .nav .topRightContents {
             list-style-type: none;
@@ -63,42 +65,39 @@
 
         /* Styling for the mobile menu */
         .mobile-menu {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: -300px; /* Adjust the width of the menu */
-    width: 300px; /* Adjust the width of the menu */
-    height: 100%;
-    background-color: rgb(26, 25, 25);
-    border-radius: 20px;
-    padding: 20px;
-    z-index: 1;
-    transition: right 0.3s ease-in-out;
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -780px; /* Adjust the width of the menu */
+            width: 50%; /* Adjust the width of the menu */
+            height: 100%;
+            background-color: yellow;
+            border-radius: 20px;
+            padding: 20px;
+            z-index: 1;
+            transition: right 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+        .mobile-menu.active {
+            right: 0;
+        }
 
-.mobile-menu.active {
-    right: 0;
-}
-
-.mobile-menu a {
-    text-decoration: none;
-    color: #c90707;
-    font-weight: bold;
-    font-size: 20px;
-    padding: 10px 0; /* Add vertical padding to separate elements */
-    width: 100%; /* Ensure full width for each menu item */
-
-    /* Center the text horizontally */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
+        .mobile-menu a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            font-size: 30px;
+            padding: 20px 50px; /* Add vertical padding to separate elements */
+            width: 100%; /* Ensure full width for each menu item */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 80px;
+        }
 
         /* Your existing styles here */
 
@@ -122,142 +121,227 @@
         /* Apply letter-spacing animation on hover */
         ul a:hover {
             letter-spacing: 2px; /* Adjust the desired letter-spacing on hover */
+            
+        }
+        .mobile-menu ul {
+            flex-direction: column;
         }
 
-     
-
-        /* Media query for mobile devices */
-        @media screen and (max-width: 768px) {
-            .nav .topRightContents {
-                display: none; /* Hide the navigation menu on smaller screens */
-            }
-
-            .mobile-menu-icon {
-                display: block; /* Display the mobile menu icon */
-                position: absolute;
-                top: 20px; /* Adjust the top position as needed */
-                right: 20px; /* Adjust the right position as needed */
-            }
-
-            .mobile-menu {
-                display: block; /* Display the mobile menu */
-            }
+        /* CSS for the video background */
+        .videoProject {
+            position: absolute;
+            top: 25%;
+            left: 40%;
+            width: 40%; /* Adjust the width of the video */
+            max-height: 80%; /* Adjust the maximum height of the video */
+            z-index: -1; /* Place it behind other content */
+            border-radius: 5px;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease, transform 0.3s ease; /* Add transitions for filter and transform */
+            transform-origin: center center; /* Set transform origin to the center */
         }
 
-        /* Stack child elements vertically in the mobile menu */
-.mobile-menu ul {
-    flex-direction: column;
-}
+        .videoProject:hover {
+            filter: none;
+        }
 
-/* CSS for the video background */
-/* CSS for the video background */
-/* CSS for the video background */
-.background-video {
-    position: absolute;
-    top: 25%;
-    right: 300px;
-    width: 40%; /* Adjust the width of the video */
-    max-height: 80%; /* Adjust the maximum height of the video */
-    z-index: -1; /* Place it behind other content */
-    border-radius: 5px;
-    filter: grayscale(100%);
-    transition: filter 0.3s ease, transform 0.3s ease; /* Add transitions for filter and transform */
-   
-
-    /* Set transform origin to the center */
-    transform-origin: center center;
-}
-
-.background-video:hover {
-    filter: none;
-    
-}
-
-
-
-
-/* CSS for the text overlay */
-.text-overlay {
+       /* CSS for text overlay */
+.Titles {
     position: absolute;
     top: 50%;
-    left: 400px; /* Adjust the left position for the text */
+    left: 25%;
     transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 0.7);
     padding: 20px;
     border-radius: 10px;
     color: white;
     font-size: 24px;
-    max-width: 40%;
+    max-width: 80%;
 }
 
-.text-overlay h1 {
-    margin: 0; /* Remove default margin to align the lines */
+.Titles h1 {
+    margin: 0;
 }
 
-.text-overlay h1 br {
-    display: inline-block; /* Make the line breaks start from the same point */
+.Titles h1 br {
+    display: inline-block;
 }
 
-.text-overlay .MG{
+.Titles .MG {
     margin-top: 10%;
     margin-left: 5%;
-    
 }
-.text-overlay .desc{
+
+.Titles .desc {
     margin-top: 10%;
 }
 
-.text-overlay .yellow-line {
+.Titles .yellow-line {
     position: absolute;
-    top: 54%; /* Adjust the vertical position as needed */
-    left: 20px; /* Adjust the horizontal position as needed */
-    width: 4px; /* Adjust the width of the line */
-    height: 30px; /* Adjust the height of the line */
-    background-color: yellow; /* Set the background color to yellow */
+    top: 45%;
+    left: 20px;
+    width: 4px;
+    height: 30px;
+    background-color: yellow;
 }
-/* CSS for the arrows on both sides */
-/* CSS for the arrows on both sides */
-.arrow {
-    position: absolute;
-    top: 50%;
-    width: 90px;
-    height: 90px;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.7); /* Adjust opacity and color as needed */
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 40px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+        /* CSS for the arrows on both sides */
+        .arrow {
+            position: absolute;
+            top: 50%;
+            width: 90px;
+            height: 90px;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease, width 0.3s ease, height 0.3s ease;
+        }
+
+        .arrow.left {
+            left: 70px;
+            border: 1px solid white;
+        }
+
+        .arrow.right {
+            right: 70px;
+            border: 1px solid white;
+        }
+
+        .arrow:hover {
+            background-color: white;
+            color: black;
+            width: 100px;
+            height: 100px;
+        }
+
+        
+        
+        /* =================================== EDIT CODE FOR MOBILE DIMENSIONSSSSSSSSS=============================*/
+
+
+        @media screen and (max-width: 1024px) {
+    .nav .topRightContents {
+        display: none; /* Hide the navigation menu on smaller screens */
+    }
+    .nav .LogoName{
+        margin-left: 10px;
+    }
+
+    .mobile-menu-icon {
+        display: block; /* Display the mobile menu icon */
+        position: absolute;
+        top: 20px; /* Adjust the top position as needed */
+        right: 20px; /* Adjust the right position as needed */
+    }
+
+    .mobile-menu {
+        display: block; /* Display the mobile menu */
+    }
+
+    /* CSS for mobile video */
+        /* CSS for mobile video */
+        .videoProject {
+        position: absolute;
+        top: 65%; /* Center the video vertically */
+        left: 50%; /* Center the video horizontally */
+        transform: translate(-50%, -50%); /* Center the video both horizontally and vertically */
+        width: 60%; /* Adjust the width of the video */
+        max-height: 70vh; /* Adjust the maximum height of the video */
+        z-index: -1; /* Place it behind other content */
+        border-radius: 5px;
+        filter: grayscale(100%);
+        transition: filter 0.3s ease, transform 0.3s ease; /* Add transitions for filter and transform */
+        transform-origin: center center; /* Set transform origin to the center */
+    }
+
+    /* CSS for text overlay */
+    .Titles {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+        
+        padding: 0  ;
+        
+        color: white;
+        font-size: 18px;
+        max-width: 500px;
+    }
+
+        .Titles h1 {
+            margin: 0;
+        }
+
+        .Titles h1 br {
+            display: inline;
+        }
+
+        .Titles .MG {
+            margin-top: 10%;
+            margin-left: 5%;
+        }
+
+        .Titles .desc {
+            margin-top: 10%;
+        }
+
+        .Titles .yellow-line {
+            position: absolute;
+            top: 43.5%;
+            left: 1px;
+            width: 4px;
+            height: 20px;
+            background-color: yellow;
+        }
+
+    .arrow {
+           
+            top: 40%;
+            width: 70px;
+            height: 70px;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease, width 0.3s ease, height 0.3s ease;
+        }
+
+        .arrow.left {
+            left: 20px;
+            border: 1px solid white;
+        }
+
+        .arrow.right {
+            right: 20px;
+            border: 1px solid white;
+        }
+
+        .arrow:hover {
+            background-color: white;
+            color: black;
+            width: 80px;
+            height: 80px;
+        }
 }
 
-.arrow.left {
-    left: 70px;
-    border: 1px solid white; /* Add white border to the left arrow */
-}
 
-.arrow.right {
-    right: 70px;
-    border: 1px solid white; /* Add white border to the right arrow */
-}
-
-.arrow:hover {
-    background-color: white; /* Fill the circle with white color on hover */
-    color: black; /* Change arrow color to black on hover */
-    width: 100px;
-    height: 100px;
-}
-
-
+        /* Stack child elements vertically in the mobile menu */
 
     </style>
 </head>
 <body>
     <div class="nav">
-        <h2 class="LogoName">Dawood A</h2>
+        <h2 class="LogoName">D<span class="yellow-dot">.</span>A</h2>
         <div class="mobile-menu-icon" id="mobileMenuIcon">&#9776;</div>
         <div class="mobile-menu" id="mobileMenu">
             <ul>
@@ -275,91 +359,119 @@
         </ul>
     </div>
 
+    <!-- Projects Here -->
+    <div class="project" id="project1">
+        <video autoplay loop muted playsinline class="videoProject">
+            <source src="Upwork Intro Video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
 
-    <!-- Video background -->
-    <video autoplay loop muted playsinline class="background-video">
-        <source src="Upwork Intro Video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-
-    <!-- Text overlay -->
-    <div class="text-overlay">
-       <h1>My <br>Intro Video</h1>
-       <p class="MG">Motion Graphics</p>     
-       <p class="desc">A short intro video showcasing <br> my editing skills.</p>
-       <div class="yellow-line"></div>     
+    <!-- description of video -->   
+        <div class="Titles">
+            <h1>Intro Video</h1>
+            <p class="MG">Motion Graphics</p>     
+            <p class="desc">A short intro video showcasing <br> my editing skills.</p>
+            <div class="yellow-line"></div>     
+         </div>
     </div>
 
-    <!-- Add this below your text overlay -->
-<div class="yellow-line"></div>
 
+
+    <!-- Add this below your text overlay -->
+    <div class="yellow-line"></div>
 
     <!-- Left arrow -->
-    <div class="arrow left">&#8249;</div>
+    <div class="arrow left" onclick="showPrevProject()">&#8249;</div>
 
     <!-- Right arrow -->
-    <div class="arrow right">&#8250;</div>
+    <div class="arrow right" onclick="showNextProject()">&#8250;</div>
 
-<script>
-      // JavaScript to toggle the mobile menu
-    const mobileMenuIcon = document.getElementById('mobileMenuIcon');
-    const mobileMenu = document.getElementById('mobileMenu');
+ 
 
-    mobileMenuIcon.addEventListener('click', () => {
-    mobileMenu.classList.toggle('active');
-    });
+   
+    
 
-    const video = document.querySelector('.background-video');
-    const arrows = document.querySelectorAll('.arrow'); // Select all arrow elements
-
-
-
-/* ARROWS MOVEMENT THING */
-
-    arrows.forEach((arrow) => {
-        arrow.addEventListener('mousemove', (e) => {
-            const mouseX = e.clientX;
-             const mouseY = e.clientY;
-            const arrowX = arrow.offsetLeft + arrow.offsetWidth / 2;
-            const arrowY = arrow.offsetTop + arrow.offsetHeight / 2;
-            const deltaX = mouseX - arrowX;
-            const deltaY = mouseY - arrowY;
-            const moveX = deltaX / 20; /* Adjust the movement factor as needed */
-            const moveY = deltaY / 20; /* Adjust the movement factor as needed */
-
-            arrow.style.transform = `translate(${moveX}px, ${moveY - arrow.offsetHeight / 2}px)`; // Adjust the transform here
-            arrow.style.backgroundColor = 'white'; // Fill arrow circle with white
-            arrow.style.color = 'black'; // Change arrow color to black
+    <script>
+        // JavaScript to toggle the mobile menu
+        const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+        const mobileMenu = document.getElementById('mobileMenu');
+    
+        mobileMenuIcon.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
         });
+    
+        const video = document.querySelector('.videoProject');
+        const arrows = document.querySelectorAll('.arrow'); // Select all arrow elements
+    
+        // Check if the screen width is greater than 1024 pixels
+        if (window.innerWidth > 1024) {
+            /* ARROWS MOVEMENT THING */
+            arrows.forEach((arrow) => {
+                arrow.addEventListener('mousemove', (e) => {
+                    const mouseX = e.clientX;
+                    const mouseY = e.clientY;
+                    const arrowX = arrow.offsetLeft + arrow.offsetWidth / 2;
+                    const arrowY = arrow.offsetTop + arrow.offsetHeight / 2;
+                    const deltaX = mouseX - arrowX;
+                    const deltaY = mouseY - arrowY;
+                    const moveX = deltaX / 20; /* Adjust the movement factor as needed */
+                    const moveY = deltaY / 20; /* Adjust the movement factor as needed */
+    
+                    arrow.style.transform = `translate(${moveX}px, ${moveY - arrow.offsetHeight / 2}px)`; // Adjust the transform here
+                    arrow.style.backgroundColor = 'white'; // Fill arrow circle with white
+                    arrow.style.color = 'black'; // Change arrow color to black
+                });
+    
+                arrow.addEventListener('mouseout', () => {
+                    arrow.style.transform = 'translateY(-50%)'; // Reset to center position
+                    arrow.style.backgroundColor = 'rgba(0, 0, 0, 0.7)'; // Reset arrow circle color
+                    arrow.style.color = 'white'; // Reset arrow color
+                });
+            });
+    
+            /* Video MOVEMENT THING */
+            video.addEventListener('mousemove', (e) => {
+                const mouseX = e.clientX;
+                const mouseY = e.clientY;
+                const videoX = video.offsetLeft + video.offsetWidth / 2;
+                const videoY = video.offsetTop + video.offsetHeight / 2;
+                const deltaX = mouseX - videoX;
+                const deltaY = mouseY - videoY;
+                const moveX = deltaX / 20; /* Adjust the movement factor as needed */
+                const moveY = deltaY / 20; /* Adjust the movement factor as needed */
+    
+                video.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+    
+            video.addEventListener('mouseout', () => {
+                video.style.transform = 'translate(0)';
+            });
+        }
 
-        arrow.addEventListener('mouseout', () => {
-            arrow.style.transform = 'translateY(-50%)'; // Reset to center position
-            arrow.style.backgroundColor = 'rgba(0, 0, 0, 0.7)'; // Reset arrow circle color
-            arrow.style.color = 'white'; // Reset arrow color
-        });
-    });
 
-    /* Video MOVEMENT THING */
-    video.addEventListener('mousemove', (e) => {
-    const mouseX = e.clientX;
-    const mouseY = e.clientY;
-    const videoX = video.offsetLeft + video.offsetWidth / 2;
-    const videoY = video.offsetTop + video.offsetHeight / 2;
-    const deltaX = mouseX - videoX;
-    const deltaY = mouseY - videoY;
-    const moveX = deltaX / 20; /* Adjust the movement factor as needed */
-    const moveY = deltaY / 20; /* Adjust the movement factor as needed */
+        let currentProject = 1;
+        const totalProjects = 2; // Update this with the total number of projects
 
-    video.style.transform = `translate(${moveX}px, ${moveY}px)`;
-    });
+        function showPrevProject() {
+            if (currentProject > 1) {
+                document.getElementById(`project${currentProject}`).style.display = 'none';
+                currentProject--;
+                document.getElementById(`project${currentProject}`).style.display = 'block';
+            }
+        }
 
-    video.addEventListener('mouseout', () => {
-    video.style.transform = 'translate(0)';
-    });
+        function showNextProject() {
+            if (currentProject < totalProjects) {
+                document.getElementById(`project${currentProject}`).style.display = 'none';
+                currentProject++;
+                document.getElementById(`project${currentProject}`).style.display = 'block';
+            }
+        }
 
+        // Show the initial project
+        document.getElementById(`project${currentProject}`).style.display = 'block';
 
-</script>
+    </script>
+    
 </body>
-
 </html>
