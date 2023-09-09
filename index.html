@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Git Page</title>
+    <title>Your Page Title</title>
     <style>
         /* Reset default styles */
         * {
@@ -30,6 +30,7 @@
         .nav .LogoName {
             color: white;
             margin-left: -20px;
+            font-size: 19px;
         }
         .yellow-dot {
     color: yellow;
@@ -145,6 +146,26 @@
             filter: none;
         }
 
+           .project {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: black;
+        }
+
+        .project video {
+            width: 40%;
+            max-height: 100%;
+            border-radius: 5px;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease, transform 0.3s ease;
+            transform-origin: center center;
+            z-index: 0;
+        }
+
        /* CSS for text overlay */
 .Titles {
     position: absolute;
@@ -220,6 +241,50 @@
         }
 
         
+        .center-button {
+        text-align: center;
+        margin-top: 1px; /* Adjust the margin as needed */
+    }
+
+    #seeMoreButton {
+    background-color: grayscale(100%);
+    border: 2px solid grayscale(100%);
+    color: black;
+    padding: 10px 25px;
+    font-size: 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+    #seeMoreButton:hover {
+        background-color: yellow;
+        color: black;
+        transform: scale(1.05); /* Add a slight scale effect on hover */
+    }
+
+    .fade-out {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    /* Animation for fading in the video */
+    .fade-in {
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    /* Animation for the upper and lower text */
+    .text-slide-down {
+        transform: translateY(100%);
+        transition: transform 0.5s ease-in-out;
+    }
+
+    /* Animation for the middle text */
+    .text-slide-left {
+        transform: translateX(-100%);
+        transition: transform 0.5s ease-in-out;
+    }
         
         /* =================================== EDIT CODE FOR MOBILE DIMENSIONSSSSSSSSS=============================*/
 
@@ -251,13 +316,33 @@
         left: 50%; /* Center the video horizontally */
         transform: translate(-50%, -50%); /* Center the video both horizontally and vertically */
         width: 60%; /* Adjust the width of the video */
-        max-height: 70vh; /* Adjust the maximum height of the video */
+        max-height: 100vh; /* Adjust the maximum height of the video */
         z-index: -1; /* Place it behind other content */
         border-radius: 5px;
         filter: grayscale(100%);
         transition: filter 0.3s ease, transform 0.3s ease; /* Add transitions for filter and transform */
         transform-origin: center center; /* Set transform origin to the center */
     }
+
+    .project {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: black;
+        }
+
+        .project video {
+            width: 70%;
+            max-height: 100%;
+            border-radius: 5px;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease, transform 0.3s ease;
+            transform-origin: center center;
+            z-index: 0;
+        }
 
     /* CSS for text overlay */
     .Titles {
@@ -332,6 +417,28 @@
             width: 80px;
             height: 80px;
         }
+
+        .center-button {
+        text-align: center;
+        margin-top: 1px; /* Adjust the margin as needed */
+    }
+
+    #seeMoreButton {
+    background-color: grayscale(100%);
+    border: 2px solid grayscale(100%);
+    color: black;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+    #seeMoreButton:hover {
+        background-color: yellow;
+        color: black;
+        transform: scale(1.05); /* Add a slight scale effect on hover */
+    }
 }
 
 
@@ -341,7 +448,7 @@
 </head>
 <body>
     <div class="nav">
-        <h2 class="LogoName">D<span class="yellow-dot">.</span>A</h2>
+        <h2 class="LogoName">d<span class="yellow-dot">.</span>A</h2>
         <div class="mobile-menu-icon" id="mobileMenuIcon">&#9776;</div>
         <div class="mobile-menu" id="mobileMenu">
             <ul>
@@ -359,14 +466,14 @@
         </ul>
     </div>
 
-    <!-- Projects Here -->
+    <!-- Projects 1 -->
     <div class="project" id="project1">
         <video autoplay loop muted playsinline class="videoProject">
             <source src="Upwork Intro Video.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
 
-    <!-- description of video -->   
+       <!-- description of projJEct -->   
         <div class="Titles">
             <h1>Intro Video</h1>
             <p class="MG">Motion Graphics</p>     
@@ -375,6 +482,26 @@
          </div>
     </div>
 
+    <!-- Projects 2 -->
+    <div class="project" id="project2" style="display: none;">
+        <video autoplay loop muted playsinline class="videoProject">
+            <source src="Documentary Amouranth.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+       <!-- description of projJEct -->   
+        <div class="Titles">
+            <h1>Documentary</h1>
+            <p class="MG">Motion Graphics</p>     
+            <p class="desc">A documentary style video <br> for YouTube.</p>
+            <div class="yellow-line"></div>     
+         </div>
+    </div>
+
+    <div class="center-button">
+        <button id="seeMoreButton">See All Projects</button>
+    </div>
+    
 
 
     <!-- Add this below your text overlay -->
@@ -447,11 +574,10 @@
                 video.style.transform = 'translate(0)';
             });
         }
-
-
+    
         let currentProject = 1;
         const totalProjects = 2; // Update this with the total number of projects
-
+    
         function showPrevProject() {
             if (currentProject > 1) {
                 document.getElementById(`project${currentProject}`).style.display = 'none';
@@ -459,7 +585,7 @@
                 document.getElementById(`project${currentProject}`).style.display = 'block';
             }
         }
-
+    
         function showNextProject() {
             if (currentProject < totalProjects) {
                 document.getElementById(`project${currentProject}`).style.display = 'none';
@@ -467,11 +593,14 @@
                 document.getElementById(`project${currentProject}`).style.display = 'block';
             }
         }
-
-        // Show the initial project
+    
+        // Show the initial project (Project 1)
         document.getElementById(`project${currentProject}`).style.display = 'block';
+    
+
 
     </script>
+    
     
 </body>
 </html>
