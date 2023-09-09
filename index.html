@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Page Title</title>
+    <title>Home</title>
     <style>
         /* Reset default styles */
         * {
@@ -138,7 +138,7 @@
             z-index: -1; /* Place it behind other content */
             border-radius: 5px;
             filter: grayscale(100%);
-            transition: filter 0.3s ease, transform 0.3s ease; /* Add transitions for filter and transform */
+            transition: filter 0.3s ease, transform 0.3s ease, opacity 0.5s ease; /* Add transitions for filter, transform, and opacity */
             transform-origin: center center; /* Set transform origin to the center */
         }
 
@@ -154,6 +154,7 @@
             justify-content: center;
             align-items: center;
             background: black;
+            transition: opacity 1s ease-in-out, transform s ease-in-out;
         }
 
         .project video {
@@ -161,7 +162,7 @@
             max-height: 100%;
             border-radius: 5px;
             filter: grayscale(100%);
-            transition: filter 0.3s ease, transform 0.3s ease;
+            transition: filter 0.3s ease, transform 0.3s ease, opacity 0.5s ease;
             transform-origin: center center;
             z-index: 0;
         }
@@ -178,6 +179,7 @@
     color: white;
     font-size: 24px;
     max-width: 80%;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
 .Titles h1 {
@@ -263,28 +265,7 @@
         transform: scale(1.05); /* Add a slight scale effect on hover */
     }
 
-    .fade-out {
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-    }
 
-    /* Animation for fading in the video */
-    .fade-in {
-        opacity: 1;
-        transition: opacity 0.5s ease-in-out;
-    }
-
-    /* Animation for the upper and lower text */
-    .text-slide-down {
-        transform: translateY(100%);
-        transition: transform 0.5s ease-in-out;
-    }
-
-    /* Animation for the middle text */
-    .text-slide-left {
-        transform: translateX(-100%);
-        transition: transform 0.5s ease-in-out;
-    }
         
         /* =================================== EDIT CODE FOR MOBILE DIMENSIONSSSSSSSSS=============================*/
 
@@ -498,6 +479,21 @@
          </div>
     </div>
 
+    <div class="project" id="project3" style="display: none;">
+        <video autoplay loop muted playsinline class="videoProject">
+            <source src="Sample.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+       <!-- description of projJEct -->   
+        <div class="Titles">
+            <h1>Documentary</h1>
+            <p class="MG">Doc Doc</p>     
+            <p class="desc">A documentary style video <br> for YouTube.</p>
+            <div class="yellow-line"></div>     
+         </div>
+    </div>
+
     <div class="center-button">
         <button id="seeMoreButton">See All Projects</button>
     </div>
@@ -519,85 +515,133 @@
     
 
     <script>
-        // JavaScript to toggle the mobile menu
-        const mobileMenuIcon = document.getElementById('mobileMenuIcon');
-        const mobileMenu = document.getElementById('mobileMenu');
-    
-        mobileMenuIcon.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
+      // JavaScript to toggle the mobile menu
+const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+const mobileMenu = document.getElementById('mobileMenu');
+
+mobileMenuIcon.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+});
+
+const videos = document.querySelectorAll('.videoProject'); // Select all video elements
+const arrows = document.querySelectorAll('.arrow'); // Select all arrow elements
+
+// Check if the screen width is greater than 1024 pixels
+if (window.innerWidth > 1024) {
+    /* ARROWS MOVEMENT THING */
+    arrows.forEach((arrow) => {
+        arrow.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            const arrowX = arrow.offsetLeft + arrow.offsetWidth / 2;
+            const arrowY = arrow.offsetTop + arrow.offsetHeight / 2;
+            const deltaX = mouseX - arrowX;
+            const deltaY = mouseY - arrowY;
+            const moveX = deltaX / 20; /* Adjust the movement factor as needed */
+            const moveY = deltaY / 20; /* Adjust the movement factor as needed */
+
+            arrow.style.transform = `translate(${moveX}px, ${moveY - arrow.offsetHeight / 2}px)`; // Adjust the transform here
+            arrow.style.backgroundColor = 'white'; // Fill arrow circle with white
+            arrow.style.color = 'black'; // Change arrow color to black
         });
-    
-        const video = document.querySelector('.videoProject');
-        const arrows = document.querySelectorAll('.arrow'); // Select all arrow elements
-    
-        // Check if the screen width is greater than 1024 pixels
-        if (window.innerWidth > 1024) {
-            /* ARROWS MOVEMENT THING */
-            arrows.forEach((arrow) => {
-                arrow.addEventListener('mousemove', (e) => {
-                    const mouseX = e.clientX;
-                    const mouseY = e.clientY;
-                    const arrowX = arrow.offsetLeft + arrow.offsetWidth / 2;
-                    const arrowY = arrow.offsetTop + arrow.offsetHeight / 2;
-                    const deltaX = mouseX - arrowX;
-                    const deltaY = mouseY - arrowY;
-                    const moveX = deltaX / 20; /* Adjust the movement factor as needed */
-                    const moveY = deltaY / 20; /* Adjust the movement factor as needed */
-    
-                    arrow.style.transform = `translate(${moveX}px, ${moveY - arrow.offsetHeight / 2}px)`; // Adjust the transform here
-                    arrow.style.backgroundColor = 'white'; // Fill arrow circle with white
-                    arrow.style.color = 'black'; // Change arrow color to black
-                });
-    
-                arrow.addEventListener('mouseout', () => {
-                    arrow.style.transform = 'translateY(-50%)'; // Reset to center position
-                    arrow.style.backgroundColor = 'rgba(0, 0, 0, 0.7)'; // Reset arrow circle color
-                    arrow.style.color = 'white'; // Reset arrow color
-                });
-            });
-    
-            /* Video MOVEMENT THING */
-            video.addEventListener('mousemove', (e) => {
-                const mouseX = e.clientX;
-                const mouseY = e.clientY;
-                const videoX = video.offsetLeft + video.offsetWidth / 2;
-                const videoY = video.offsetTop + video.offsetHeight / 2;
-                const deltaX = mouseX - videoX;
-                const deltaY = mouseY - videoY;
-                const moveX = deltaX / 20; /* Adjust the movement factor as needed */
-                const moveY = deltaY / 20; /* Adjust the movement factor as needed */
-    
-                video.style.transform = `translate(${moveX}px, ${moveY}px)`;
-            });
-    
-            video.addEventListener('mouseout', () => {
-                video.style.transform = 'translate(0)';
-            });
-        }
-    
-        let currentProject = 1;
-        const totalProjects = 2; // Update this with the total number of projects
-    
-        function showPrevProject() {
+
+        arrow.addEventListener('mouseout', () => {
+            arrow.style.transform = 'translateY(-50%)'; // Reset to center position
+            arrow.style.backgroundColor = 'rgba(0, 0, 0, 0.7)'; // Reset arrow circle color
+            arrow.style.color = 'white'; // Reset arrow color
+        });
+    });
+
+    /* Video MOVEMENT THING for all videos */
+    videos.forEach((video) => {
+        video.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            const videoX = video.offsetLeft + video.offsetWidth / 2;
+            const videoY = video.offsetTop + video.offsetHeight / 2;
+            const deltaX = mouseX - videoX;
+            const deltaY = mouseY - videoY;
+            const moveX = deltaX / 20; /* Adjust the movement factor as needed */
+            const moveY = deltaY / 20; /* Adjust the movement factor as needed */
+
+            video.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+
+        video.addEventListener('mouseout', () => {
+            video.style.transform = 'translate(0)';
+        });
+    });
+}
+
+let currentProject = 1;
+const totalProjects = 3; // Update this with the total number of projects
+
+function showPrevProject() {
             if (currentProject > 1) {
-                document.getElementById(`project${currentProject}`).style.display = 'none';
+                const currentProjectElement = document.getElementById(`project${currentProject}`);
+                const nextProjectElement = document.getElementById(`project${currentProject - 1}`);
+                const currentVideo = currentProjectElement.querySelector('.videoProject');
+                const nextVideo = nextProjectElement.querySelector('.videoProject');
+                const currentTitles = currentProjectElement.querySelector('.Titles');
+                const nextTitles = nextProjectElement.querySelector('.Titles');
+
+                // Fade out the current video
+                currentVideo.style.opacity = '0';
+
+                // Fade out the current titles
+                currentTitles.style.opacity = '0';
+
+                // Wait for the fade-out animation to complete
+                setTimeout(() => {
+                    currentVideo.style.display = 'none'; // Hide the current video
+                    currentProjectElement.style.display = 'none'; // Hide the current project
+                    nextProjectElement.style.display = 'block'; // Show the next project
+
+                    // Fade in the next video
+                    nextVideo.style.opacity = '1';
+                    nextVideo.style.display = 'block'; // Show the next video
+
+                    // Fade in the next titles
+                    nextTitles.style.opacity = '1';
+                }, 500); // Adjust the duration as needed
                 currentProject--;
-                document.getElementById(`project${currentProject}`).style.display = 'block';
             }
         }
-    
+
         function showNextProject() {
             if (currentProject < totalProjects) {
-                document.getElementById(`project${currentProject}`).style.display = 'none';
+                const currentProjectElement = document.getElementById(`project${currentProject}`);
+                const nextProjectElement = document.getElementById(`project${currentProject + 1}`);
+                const currentVideo = currentProjectElement.querySelector('.videoProject');
+                const nextVideo = nextProjectElement.querySelector('.videoProject');
+                const currentTitles = currentProjectElement.querySelector('.Titles');
+                const nextTitles = nextProjectElement.querySelector('.Titles');
+
+                // Fade out the current video
+                currentVideo.style.opacity = '0';
+
+                // Fade out the current titles
+                currentTitles.style.opacity = '0';
+
+                // Wait for the fade-out animation to complete
+                setTimeout(() => {
+                    currentVideo.style.display = 'none'; // Hide the current video
+                    currentProjectElement.style.display = 'none'; // Hide the current project
+                    nextProjectElement.style.display = 'block'; // Show the next project
+
+                    // Fade in the next video
+                    nextVideo.style.opacity = '1';
+                    nextVideo.style.display = 'block'; // Show the next video
+
+                    // Fade in the next titles
+                    nextTitles.style.opacity = '1';
+                }, 500); // Adjust the duration as needed
                 currentProject++;
-                document.getElementById(`project${currentProject}`).style.display = 'block';
             }
         }
-    
-        // Show the initial project (Project 1)
-        document.getElementById(`project${currentProject}`).style.display = 'block';
-    
 
+// Show the initial project (Project 1)
+document.getElementById(`project${currentProject}`).style.display = 'block';
 
     </script>
     
